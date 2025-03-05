@@ -159,3 +159,91 @@ body {
 .location-image:hover {
   transform: scale(1.05);
 }
+
+select {
+  background-color: white;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  appearance: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+/* Price Range Slider Styles */
+.price-slider {
+  -webkit-appearance: none;
+  pointer-events: none;
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.price-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Hide default focus styles */
+.price-slider:focus {
+  outline: none;
+}
+
+/* Ensure the slider thumbs are always on top */
+.price-slider:nth-child(1) {
+  z-index: 2;
+}
+
+.price-slider:nth-child(2) {
+  z-index: 1;
+}
+
+.filter-button {
+  transition: all 0.2s;
+  border: 1px solid #e5e7eb;
+}
+
+.filter-button:hover {
+  border-color: #d1d5db;
+}
+
+.filter-panel {
+  animation: slideIn 0.2s ease-out;
+  border: 1px solid #e5e7eb;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.filter-section {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.filter-section:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
