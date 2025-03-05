@@ -46,8 +46,10 @@ body {
   background: white;
   border-radius: 16px;
   padding: 0;
-  width: 320px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  width: 340px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .custom-popup .leaflet-popup-content {
@@ -55,8 +57,18 @@ body {
   width: 100% !important;
 }
 
+.custom-popup .leaflet-popup-tip {
+  background: white;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-close-button {
+  display: none;
+}
+
 .popup-content {
   padding: 20px;
+  position: relative;
 }
 
 .popup-content .header {
@@ -180,6 +192,7 @@ select:focus {
 .price-slider {
   -webkit-appearance: none;
   pointer-events: none;
+  touch-action: none;
 }
 
 .price-slider::-webkit-slider-thumb {
@@ -189,6 +202,7 @@ select:focus {
   height: 24px;
   border-radius: 50%;
   cursor: pointer;
+  touch-action: none;
 }
 
 .price-slider::-moz-range-thumb {
@@ -197,6 +211,7 @@ select:focus {
   border-radius: 50%;
   cursor: pointer;
   pointer-events: auto;
+  touch-action: none;
 }
 
 /* Hide default focus styles */

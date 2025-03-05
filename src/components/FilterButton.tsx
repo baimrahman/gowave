@@ -14,7 +14,7 @@ export const FilterButton = ({
   return (
     <button 
       onClick={() => setIsFilterOpen(!isFilterOpen)}
-      className="bg-white rounded-lg shadow-lg px-2 py-2 flex items-center gap-2 hover:bg-gray-50 transition-colors"
+      className="bg-white rounded-lg shadow-lg w-10 h-10 flex items-center justify-center hover:bg-gray-50 transition-colors relative"
     >
       <svg className="w-5 h-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path 
@@ -25,7 +25,7 @@ export const FilterButton = ({
         />
       </svg>
       {hasActiveFilters && (
-        <span className="bg-blue-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+        <span className="absolute -top-1 -right-1 bg-blue-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
           {activeFilterCount}
         </span>
       )}

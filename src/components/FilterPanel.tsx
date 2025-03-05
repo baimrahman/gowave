@@ -1,4 +1,5 @@
 import { PaddlingService } from '../types';
+import { useRef, useEffect } from 'react';
 
 interface FilterPanelProps {
   priceRange: [number, number];
@@ -19,6 +20,27 @@ export const FilterPanel = ({
   formatPrice,
   setSelectedServices
 }: FilterPanelProps) => {
+  const sliderContainerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const container = sliderContainerRef.current;
+    if (!container) return;
+    
+    const preventMapInteraction = (e: TouchEvent) => {
+      e.stopPropagation();
+    };
+    
+    container.addEventListener('touchstart', preventMapInteraction, { passive: false });
+    container.addEventListener('touchmove', preventMapInteraction, { passive: false });
+    container.addEventListener('touchend', preventMapInteraction, { passive: false });
+    
+    return () => {
+      container.removeEventListener('touchstart', preventMapInteraction);
+      container.removeEventListener('touchmove', preventMapInteraction);
+      container.removeEventListener('touchend', preventMapInteraction);
+    };
+  }, []);
+  
   const handleReset = () => {
     setPriceRange([0, 400000]);
     setSelectedServices([]);
@@ -26,7 +48,12 @@ export const FilterPanel = ({
   };
 
   return (
-    <div className="absolute bottom-full right-4 bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel">
+    <div 
+      className="absolute bottom-full right-4 bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel"
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchMove={(e) => e.stopPropagation()}
+      onTouchEnd={(e) => e.stopPropagation()}
+    >
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-800">Filters</h3>
         <button 
@@ -75,7 +102,7 @@ export const FilterPanel = ({
             <span>Rp {formatPrice(priceRange[0])}</span>
             <span>Rp {formatPrice(priceRange[1])}</span>
           </div>
-          <div className="relative h-2 bg-gray-200 rounded-full">
+          <div ref={sliderContainerRef} className="relative h-2 bg-gray-200 rounded-full touch-none">
             <input
               type="range"
               min="0"
@@ -85,7 +112,7 @@ export const FilterPanel = ({
                 const value = Math.min(Number(e.target.value), priceRange[1] - 50000);
                 setPriceRange([value, priceRange[1]]);
               }}
-              className="price-slider absolute w-full h-2 opacity-0 cursor-pointer"
+              className="price-slider absolute w-full h-2 opacity-0 cursor-pointer touch-none"
             />
             <input
               type="range"
@@ -96,7 +123,7 @@ export const FilterPanel = ({
                 const value = Math.max(Number(e.target.value), priceRange[0] + 50000);
                 setPriceRange([priceRange[0], value]);
               }}
-              className="price-slider absolute w-full h-2 opacity-0 cursor-pointer"
+              className="price-slider absolute w-full h-2 opacity-0 cursor-pointer touch-none"
             />
             <div 
               className="absolute h-2 bg-blue-500 rounded-full" 

@@ -98,7 +98,7 @@ export default function Map() {
             </Marker>
           ))}
         </MarkerClusterGroup>
-        <div className="absolute bottom-2 right-0 z-[9999] p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pr-[calc(1rem+env(safe-area-inset-right))] flex flex-col gap-2">
+        <div className="fixed bottom-6 right-4 z-[9999] p-4 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)] flex flex-col gap-2">
           <div ref={filterRef} className="flex flex-col items-end">
             <FilterButton
               isFilterOpen={isFilterOpen}
