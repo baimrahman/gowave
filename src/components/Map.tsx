@@ -70,27 +70,6 @@ export default function Map() {
 
   return (
     <div className="relative h-screen w-full">
-      <div className="absolute bottom-18 right-4 z-[1000] flex flex-col items-end" ref={filterRef}>
-        <FilterButton
-          isFilterOpen={isFilterOpen}
-          setIsFilterOpen={setIsFilterOpen}
-          hasActiveFilters={hasActiveFilters}
-          activeFilterCount={activeFilterCount}
-        />
-        
-        {isFilterOpen && (
-          <FilterPanel
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-            selectedServices={selectedServices}
-            toggleService={toggleService}
-            setIsFilterOpen={setIsFilterOpen}
-            formatPrice={formatPrice}
-            setSelectedServices={setSelectedServices}
-          />
-        )}
-      </div>
-
       <MapContainer
         center={[-2.291376, 118.033578]}
         zoom={5}
@@ -119,7 +98,29 @@ export default function Map() {
             </Marker>
           ))}
         </MarkerClusterGroup>
-        <ResetZoomButton />
+        <div className="absolute bottom-2 right-0 z-[9999] p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pr-[calc(1rem+env(safe-area-inset-right))] flex flex-col gap-2">
+          <div ref={filterRef} className="flex flex-col items-end">
+            <FilterButton
+              isFilterOpen={isFilterOpen}
+              setIsFilterOpen={setIsFilterOpen}
+              hasActiveFilters={hasActiveFilters}
+              activeFilterCount={activeFilterCount}
+            />
+            
+            {isFilterOpen && (
+              <FilterPanel
+                priceRange={priceRange}
+                setPriceRange={setPriceRange}
+                selectedServices={selectedServices}
+                toggleService={toggleService}
+                setIsFilterOpen={setIsFilterOpen}
+                formatPrice={formatPrice}
+                setSelectedServices={setSelectedServices}
+              />
+            )}
+          </div>
+          <ResetZoomButton />
+        </div>
       </MapContainer>
     </div>
   );

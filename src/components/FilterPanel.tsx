@@ -26,7 +26,7 @@ export const FilterPanel = ({
   };
 
   return (
-    <div className="absolute bottom-full mb-2 right-0 bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel">
+    <div className="absolute bottom-full right-4 bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-800">Filters</h3>
         <button 
