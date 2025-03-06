@@ -26,18 +26,32 @@ export const FilterPanel = ({
     const container = sliderContainerRef.current;
     if (!container) return;
     
-    const preventMapInteraction = (e: TouchEvent) => {
+    const preventMapInteraction = (e: Event) => {
       e.stopPropagation();
     };
     
+    // Touch events for mobile
     container.addEventListener('touchstart', preventMapInteraction, { passive: false });
     container.addEventListener('touchmove', preventMapInteraction, { passive: false });
     container.addEventListener('touchend', preventMapInteraction, { passive: false });
     
+    // Mouse events for web
+    container.addEventListener('mousedown', preventMapInteraction);
+    container.addEventListener('mousemove', preventMapInteraction);
+    container.addEventListener('mouseup', preventMapInteraction);
+    container.addEventListener('wheel', preventMapInteraction, { passive: false });
+    
     return () => {
+      // Remove touch event listeners
       container.removeEventListener('touchstart', preventMapInteraction);
       container.removeEventListener('touchmove', preventMapInteraction);
       container.removeEventListener('touchend', preventMapInteraction);
+      
+      // Remove mouse event listeners
+      container.removeEventListener('mousedown', preventMapInteraction);
+      container.removeEventListener('mousemove', preventMapInteraction);
+      container.removeEventListener('mouseup', preventMapInteraction);
+      container.removeEventListener('wheel', preventMapInteraction);
     };
   }, []);
   
@@ -49,10 +63,15 @@ export const FilterPanel = ({
 
   return (
     <div 
-      className="absolute bottom-full right-4 bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel"
+      className="absolute bottom-full bg-white rounded-lg shadow-lg p-4 min-w-[300px] filter-panel"
       onTouchStart={(e) => e.stopPropagation()}
       onTouchMove={(e) => e.stopPropagation()}
       onTouchEnd={(e) => e.stopPropagation()}
+      onClick={(e) => e.stopPropagation()}
+      onMouseDown={(e) => e.stopPropagation()}
+      onMouseMove={(e) => e.stopPropagation()}
+      onMouseUp={(e) => e.stopPropagation()}
+      onWheel={(e) => e.stopPropagation()}
     >
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-800">Filters</h3>
@@ -108,6 +127,8 @@ export const FilterPanel = ({
               min="0"
               max="400000"
               value={priceRange[0]}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               onChange={(e) => {
                 const value = Math.min(Number(e.target.value), priceRange[1] - 50000);
                 setPriceRange([value, priceRange[1]]);
@@ -119,6 +140,8 @@ export const FilterPanel = ({
               min="0"
               max="400000"
               value={priceRange[1]}
+              onClick={(e) => e.stopPropagation()}
+              onMouseDown={(e) => e.stopPropagation()}
               onChange={(e) => {
                 const value = Math.max(Number(e.target.value), priceRange[0] + 50000);
                 setPriceRange([priceRange[0], value]);
