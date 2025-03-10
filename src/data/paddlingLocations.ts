@@ -16,7 +16,7 @@ export const paddlingLocations: PaddlingLocation[] = [
   {
     position: [-6.392044, 106.752839],
     place: "Danau 7 Muara",
-    name: "Ulawana SUP",
+    name: "Ulawana",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrEDFf0p1MURKyVy8Etyxk5pem3LRXsodaWA&s",
     priceStart: 300000,
     service: [PaddlingService.StandUpPaddle],
@@ -52,7 +52,7 @@ export const paddlingLocations: PaddlingLocation[] = [
   {
     position: [-7.951609, 110.424639],
     place: "Sungai Oya",
-    name: "Ulawana SUP",
+    name: "Ulawana",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrEDFf0p1MURKyVy8Etyxk5pem3LRXsodaWA&s",
     priceStart: 200000,
     service: [PaddlingService.StandUpPaddle, PaddlingService.Kayak],
@@ -64,7 +64,7 @@ export const paddlingLocations: PaddlingLocation[] = [
   {
     position: [-7.821256, 110.11511],
     place: "Waduk Sermo",
-    name: "Ulawana SUP",
+    name: "Ulawana",
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrEDFf0p1MURKyVy8Etyxk5pem3LRXsodaWA&s",
     priceStart: 200000,
     service: [PaddlingService.StandUpPaddle, PaddlingService.Kayak],
