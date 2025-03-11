@@ -153,4 +153,20 @@ export const paddlingLocations: PaddlingLocation[] = [
       "https://andum.sgp1.cdn.digitaloceanspaces.com/gowave/priority-sup/Screenshot%202025-03-10%20at%2012.26.14.png",
     ],
   },
+  {
+    position: [-5.1669417, 119.393031],
+    place: "Tanjung Bunga",
+    name: "SUP Sodara",
+    logo: "https://andum.sgp1.cdn.digitaloceanspaces.com/gowave/sup-sodara/logo%20SUP%20SODARA%20-%20Sapril%20MA%20(1).png",
+    priceStart: 250000,
+    service: [PaddlingService.StandUpPaddle],
+    whatsapp: "https://wa.me/628114161107",
+    direction:
+      "https://www.google.com/maps/dir/?api=1&destination=-5.1669417,119.393031",
+    images: [
+      "https://andum.sgp1.cdn.digitaloceanspaces.com/gowave/sup-sodara/4%20-%20Sapril%20MA%20(1).jpeg",
+      "https://andum.sgp1.cdn.digitaloceanspaces.com/gowave/sup-sodara/5%20-%20Sapril%20MA%20(1).jpeg",
+      "https://andum.sgp1.cdn.digitaloceanspaces.com/gowave/sup-sodara/3%20-%20Sapril%20MA%20(1).jpeg"
+    ],
+  },
 ];
